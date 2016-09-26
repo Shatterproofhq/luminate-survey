@@ -1,0 +1,56 @@
+<form role="form" onsubmit="return validate_form(this)" method="POST" action="http://support.shatterproof.org/site/Survey" class="signup">
+                        <label for="header-signup-email">Email Address</label>
+                        <input type="email" required="" id="header-signup-email" maxlength="254" placeholder="email" title="Email Address" name="cons_email" class="signup-email text">
+                        <label for="header-signup-zip">Zip Code</label>
+                        <input type="tel" pattern="^\d{5}(-\d{4})?$" required="" maxlength="10" id="header-signup-zip" placeholder="zip" title="Zip Code" name="cons_zip_code" class="signup-zip text">
+                        <div style="display:none">
+                            <label for="denySubmit">Spam Control Text:</label>
+                            &nbsp;
+                            <input type="text" name="denySubmit" id="denySubmit" value="" alt="This field is used to prevent form submission by scripts." class="text">
+                            &nbsp;Please leave this field empty
+                        </div>
+                        <button name="ACTION_SUBMIT_SURVEY_RESPONSE" type="submit">Join Us</button>
+                        <input type="hidden" name="cons_info_component" id="cons_info_component" value="t">
+                        <div style="display:none">
+                            <input type="reset" name="reset" id="reset" value="Reset Answers" class="Button">
+                            &nbsp;&nbsp;
+                            <input type="submit" name="ACTION_CANCEL_RESPONSE_SUBMIT" id="ACTION_CANCEL_RESPONSE_SUBMIT" value="Cancel" class="Button submit">
+                        </div>
+                        <input type="hidden" name="SURVEY_ID" id="SURVEY_ID" value="1162">
+                    </form>
+
+                    <!-- Luminate Online Form Validation -->
+    <script type="text/javascript">
+    function validate_required(field,alerttxt) {
+        with (field) {
+            if (value==null||value=="") {
+                alert(alerttxt);return false;
+            }
+        }
+    }
+    function validate_email(field,alerttxt) {
+        with (field) {
+            apos=value.indexOf("@");
+            dotpos=value.lastIndexOf(".");
+            if (apos<1||dotpos-apos<2) {
+                alert(alerttxt);return false;
+            } else {
+                return true;
+            }
+        }
+    }
+    function validate_form(thisform) {
+        with (thisform) {
+            if (validate_required(cons_zip_code,"Zip Code is required.")==false) {
+                cons_zip_code.focus();return false;
+            }
+            if (validate_required(cons_email,"Email must be filled out.")==false) {
+                cons_email.focus();return false;
+            } else {
+                if (validate_email(cons_email,"Not a valid e-mail address.")==false) {
+                    cons_email.focus();return false;
+                }
+            }
+        }
+    }
+    </script>
